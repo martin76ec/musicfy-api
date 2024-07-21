@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc",
-    "dev": "bun run index.ts",
+    "dev": "bun run src/app.ts --watch src/*",
     "lint": "bun run eslint . --ext .ts,.tsx",
     "lint:fix": "bun run lint -- --fix",
     "format": "bun run prettier . --write"
