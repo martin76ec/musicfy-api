@@ -1,0 +1,40 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
+  },
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["simple-import-sort", "import", "unused-imports", "@typescript-eslint"],
+  "rules": {
+    "consistent-return": 1,
+    "no-else-return": 2,
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    "prettier/prettier": "error",
+    "simple-import-sort/exports": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "all",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [["^.*\\u0000$", "^\\u0000", "^node:", "^@?\\w", "^", "^\\."]]
+      }
+    ]
+  }
+}
