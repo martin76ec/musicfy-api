@@ -16,6 +16,7 @@
   "plugins": ["simple-import-sort", "import", "unused-imports", "@typescript-eslint"],
   "rules": {
     "consistent-return": 1,
+    "camelcase": "error",
     "no-else-return": 2,
     "@typescript-eslint/no-unnecessary-condition": "error",
     "prettier/prettier": "error",
