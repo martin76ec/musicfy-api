@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@constants/*": ["./src/providers/constants/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@services/*": ["./src/services/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@src/*": ["./src/*"]
+    },
     "lib": [
       "ESNext"
     ],

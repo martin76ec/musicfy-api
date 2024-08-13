@@ -1,5 +1,5 @@
+import { LOG_LEVEL } from "@constants/env";
 import pino, { LoggerOptions } from "pino";
-import { LOG_LEVEL } from "../constants/env";
 import { xlog } from "./logs-utils";
 
 const config: LoggerOptions = {

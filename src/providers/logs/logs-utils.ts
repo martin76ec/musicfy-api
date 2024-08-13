@@ -1,10 +1,12 @@
+import { logger } from "./logger";
+
 function rArrayLog(message: string, values: string[], key: string, idx: number) {
   let msg = message;
 
   if (idx < values.length) {
     msg = message.replace(key, values[idx] ?? "undefined");
   } else {
-    console.warn(`Warning: No more values left in the array for key ${key}.`);
+    logger.warn(`Warning: No more values left in the array for key ${key}.`);
   }
 
   return msg;
@@ -17,7 +19,7 @@ function rObjLog(message: string, values: Record<string, string>, key: string) {
   if (cleanKey in values) {
     msg = message.replace(key, values[cleanKey] ?? "undefined");
   } else {
-    console.warn(`Warning: Key ${cleanKey} does not exist in the provided values object.`);
+    logger.warn(`Warning: Key ${cleanKey} does not exist in the provided values object.`);
   }
 
   return msg;
