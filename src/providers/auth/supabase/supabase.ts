@@ -1,17 +1,14 @@
+import { SUPA_KEY, SUPA_URL } from "@constants/env";
 import { AuthProvider, AuthToken } from "@providers/auth/common/auth-interface";
-import { GoTrueClient, Provider, Session } from "@supabase/gotrue-js";
+import { Database } from "@providers/supabase/types";
+import { Provider, Session } from "@supabase/gotrue-js";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-export class GoTrueAuthProvider extends AuthProvider {
-  private authClient: GoTrueClient;
+export class SupabaseAuthProvider implements AuthProvider {
+  private authClient: SupabaseClient;
 
-  constructor(apiUrl: string) {
-    super();
-    this.authClient = new GoTrueClient({
-      url: apiUrl,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  constructor() {
+    this.authClient = createClient<Database>(SUPA_URL, SUPA_KEY);
   }
 
   public async login(email: string, password: string): Promise<void> {
@@ -21,8 +18,8 @@ export class GoTrueAuthProvider extends AuthProvider {
     }
   }
 
-  public async logout() {
-    await this.authClient.signOut();
+  public async logout(provider: "google" | "github") {
+    await this.authClient.signOut({ provider });
   }
 
   public async oauth(service: Provider) {
