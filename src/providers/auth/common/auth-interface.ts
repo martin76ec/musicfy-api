@@ -1,3 +1,5 @@
+import { Session } from "@supabase/supabase-js";
+
 export interface AuthToken {
   expires_at: number;
   expires_in: number;
@@ -8,7 +10,7 @@ export interface AuthToken {
 
 export abstract class AuthProvider {
   public abstract getToken(): Promise<AuthToken>;
-  public abstract login(email: string, password: string): Promise<void>;
+  public abstract login(email: string, password: string): Promise<Session>;
   public abstract logout(provider: "github" | "google"): Promise<void>;
   public abstract oauth(service: string): Promise<string>;
   public abstract refresh(token: string): Promise<void>;

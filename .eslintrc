@@ -25,6 +25,12 @@
   },
   "rules": {
 		"paths/alias": "error",
+    "typescript-paths/absolute-import": [
+      "error",
+      {
+        "enableAlias": true,
+      },
+    ],
     "import/no-unresolved": "error",
     "consistent-return": 1,
     "camelcase": ["error", { "properties": "never" }],
@@ -34,6 +40,15 @@
     "simple-import-sort/exports": "error",
     "unused-imports/no-unused-imports": "error",
     "no-console": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "all",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "unused-imports/no-unused-vars": [
       "error",
       {

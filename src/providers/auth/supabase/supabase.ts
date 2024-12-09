@@ -5,17 +5,18 @@ import { Provider, Session } from "@supabase/gotrue-js";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 export class SupabaseAuthProvider implements AuthProvider {
-  private authClient: SupabaseClient;
+  private authClient: SupabaseClient<Database>;
 
   constructor() {
     this.authClient = createClient<Database>(SUPA_URL, SUPA_KEY);
   }
 
-  public async login(email: string, password: string): Promise<void> {
-    const response = await this.authClient.signInWithPassword({ email, password });
-    if (response.error) {
-      throw new Error(response.error.message);
-    }
+  public async login(email: string, password: string) {
+    const client = createClient(SUPA_URL, SUPA_KEY);
+    const { data, error } = await client.auth.signInWithPassword({ email, password });
+    if (error) throw new Error(error.message);
+
+    return data.session;
   }
 
   public async logout(provider: "google" | "github") {

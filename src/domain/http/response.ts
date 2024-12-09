@@ -79,6 +79,7 @@ export interface SafeError {
   description: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface SafeResponse<T = any> {
   data?: T | { errors: SafeError[] };
   message?: string;
@@ -89,6 +90,14 @@ export interface SafeParams<T> {
   data?: T;
   success: boolean;
   errors?: SafeError[];
+}
+
+export function safeGenericResponse(response: SafeResponse) {
+  return { status: response.status, message: response.message };
+}
+
+export function safeResponse<T = undefined>(status: HTTPCode, data?: T, message?: string): SafeResponse<T> {
+  return { data, message, status };
 }
 
 export function zodReadable(error: ZodError) {

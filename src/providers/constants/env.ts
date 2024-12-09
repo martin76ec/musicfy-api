@@ -5,6 +5,9 @@ export const RPC_PORT = Bun.env.RPC_PORT ?? "3001";
 // LOGS
 export const LOG_LEVEL = Bun.env.LOG_LEVEL ?? "info";
 
+// DATABASE
+export const DB_URL = Bun.env.DB_URL ?? "";
+
 // SUPABASE
 export const SUPA_URL = Bun.env.SUPA_URL ?? "";
 export const SUPA_KEY = Bun.env.SUPA_KEY ?? "";

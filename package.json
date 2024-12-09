@@ -15,6 +15,7 @@
     "@faker-js/faker": "^8.4.1",
     "@types/bun": "latest",
     "@typescript-eslint/eslint-plugin": "6.4.1",
+    "drizzle-kit": "^0.29.1",
     "eslint": "8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -41,9 +42,14 @@
     "@supabase/gotrue-js": "^2.66.0",
     "@supabase/supabase-js": "^2.46.2",
     "@trpc/server": "^10.45.2",
+    "@types/pg": "^8.11.10",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.37.0",
     "elysia": "^1.1.2",
     "gotrue-js": "^0.9.29",
+    "pg": "^8.13.1",
     "pino": "^9.3.1",
+    "postgres": "^3.4.5",
     "zod": "^3.23.8"
   },
   "module": "index.ts"

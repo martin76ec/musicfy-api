@@ -1,8 +1,9 @@
-import { REST_PORT, RPC_PORT } from "./providers/constants/env";
-import { xlogger } from "./providers/logs/logger";
-import { SERVER_PORT_LOG } from "./providers/logs/logs-presets";
-import { rest } from "./services/rest";
-import { rpc } from "./services/rpc";
+import { REST_PORT } from "@constants/env";
+import { xlogger } from "@providers/logs/logger";
+import { SERVER_PORT_LOG } from "@providers/logs/logs-presets";
+import { v1 } from "@routes/v1";
+import Elysia from "elysia";
 
-rest.listen(REST_PORT, () => xlogger.info(SERVER_PORT_LOG, ["REST", REST_PORT]));
-rpc.listen(RPC_PORT, () => xlogger.info(SERVER_PORT_LOG, ["RPC", RPC_PORT]));
+const api = new Elysia();
+api.use(v1);
+api.listen(REST_PORT, () => xlogger.info(SERVER_PORT_LOG, ["REST", REST_PORT]));
