@@ -1,4 +1,4 @@
-import { logger } from "./logger";
+import { logger } from "@providers/logs/logger";
 
 function rArrayLog(message: string, values: string[], key: string, idx: number) {
   let msg = message;

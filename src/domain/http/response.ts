@@ -99,7 +99,3 @@ export function safeGenericResponse(response: SafeResponse) {
 export function safeResponse<T = undefined>(status: HTTPCode, data?: T, message?: string): SafeResponse<T> {
   return { data, message, status };
 }
-
-export function zodReadable(error: ZodError) {
-  return error.errors.map((e) => ({ code: e.code.toString(), description: `${e.path.toString()} ${e.message}` }));
-}
