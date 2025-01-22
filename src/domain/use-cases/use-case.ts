@@ -1,9 +1,9 @@
 import { logger } from "@providers/logs/logger";
-import { HTTPCode, safeGenericResponse, SafeResponse } from "@src/domain/http/response";
+import { HTTP_CODE, safeGenericResponse, SafeResponse } from "@src/domain/http/response";
 
 export abstract class BaseUseCase<P, R = undefined> {
-  protected resSuccess: SafeResponse = { message: "successful", status: HTTPCode.OK };
-  protected resError: SafeResponse = { message: "internal server error", status: HTTPCode.INTERNAL_SERVER_ERROR };
+  protected resSuccess: SafeResponse = { message: "successful", status: HTTP_CODE.OK };
+  protected resError: SafeResponse = { message: "internal server error", status: HTTP_CODE.INTERNAL_SERVER_ERROR };
 
   // eslint-disable-next-line @typescript-eslint/require-await
   protected async process(_p: P): Promise<SafeResponse<R> | void> {

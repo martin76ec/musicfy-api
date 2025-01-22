@@ -1,6 +1,4 @@
-import type { ZodError } from "zod";
-
-export enum HTTPCode {
+export enum HTTP_CODE {
   // 1xx Informational responses
   CONTINUE = 100,
   SWITCHING_PROTOCOLS = 101,
@@ -74,23 +72,26 @@ export enum HTTPCode {
   NETWORK_AUTHENTICATION_REQUIRED = 511,
 }
 
-export interface SafeError {
+//export type HTTPCode = `${HTTP_CODE}`;
+export type HTTPCode = (typeof HTTP_CODE)[keyof typeof HTTP_CODE];
+
+export type SafeError = {
   code: string;
   description: string;
-}
+};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface SafeResponse<T = any> {
+export type SafeResponse<T = any> = {
   data?: T | { errors: SafeError[] };
   message?: string;
   status: HTTPCode;
-}
+};
 
-export interface SafeParams<T> {
+export type SafeParams<T> = {
   data?: T;
   success: boolean;
   errors?: SafeError[];
-}
+};
 
 export function safeGenericResponse(response: SafeResponse) {
   return { status: response.status, message: response.message };
