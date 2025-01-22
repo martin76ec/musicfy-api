@@ -12,6 +12,6 @@ export const v1 = new Elysia({ prefix: "/v1" })
   .use(validationErrorHandler)
   .use(swagger({ path: "/docs", exclude: excludedPaths }))
   .use(trpc(playgroundRPC))
-  .use(auth)
   .use(songs)
-  .use(playground);
+  .use(playground)
+  .use(auth);
