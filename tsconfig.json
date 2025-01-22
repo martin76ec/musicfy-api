@@ -20,7 +20,8 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "noUncheckedIndexedAccess": true,
-    "noEmit": true,
+    "declaration": true,
+    "outDir": "temp",
     "types": [
       "bun-types" // add Bun global
     ]
